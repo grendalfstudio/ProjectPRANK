@@ -28,48 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dataGridViewCities = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewPlaces = new System.Windows.Forms.DataGridView();
+            this.numericUpDownCity = new System.Windows.Forms.NumericUpDown();
+            this.buttonAcceptPlace = new System.Windows.Forms.Button();
+            this.buttonAcceptCity = new System.Windows.Forms.Button();
+            this.textBoxNumberOfPlaces = new System.Windows.Forms.TextBox();
+            this.textBoxNumberOfCities = new System.Windows.Forms.TextBox();
+            this.groupBoxCitiesPlaces = new System.Windows.Forms.GroupBox();
+            this.groupBoxGoods = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxWeight = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.dataGridViewGoods = new System.Windows.Forms.DataGridView();
+            this.buttonSortName = new System.Windows.Forms.Button();
+            this.buttonSortWeight = new System.Windows.Forms.Button();
+            this.buttonSortPrice = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaces)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCity)).BeginInit();
+            this.groupBoxCitiesPlaces.SuspendLayout();
+            this.groupBoxGoods.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGoods)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewCities
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 48);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(300, 300);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewCities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCities.Location = new System.Drawing.Point(6, 48);
+            this.dataGridViewCities.Name = "dataGridViewCities";
+            this.dataGridViewCities.Size = new System.Drawing.Size(300, 300);
+            this.dataGridViewCities.TabIndex = 0;
             // 
             // label1
             // 
@@ -98,91 +98,93 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "City:";
             // 
-            // dataGridView2
+            // dataGridViewPlaces
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(404, 48);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(300, 300);
-            this.dataGridView2.TabIndex = 9;
+            this.dataGridViewPlaces.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPlaces.Location = new System.Drawing.Point(404, 48);
+            this.dataGridViewPlaces.Name = "dataGridViewPlaces";
+            this.dataGridViewPlaces.Size = new System.Drawing.Size(300, 300);
+            this.dataGridViewPlaces.TabIndex = 9;
             // 
-            // numericUpDown1
+            // numericUpDownCity
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(434, 22);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(37, 20);
-            this.numericUpDown1.TabIndex = 10;
+            this.numericUpDownCity.Location = new System.Drawing.Point(434, 22);
+            this.numericUpDownCity.Name = "numericUpDownCity";
+            this.numericUpDownCity.Size = new System.Drawing.Size(37, 20);
+            this.numericUpDownCity.TabIndex = 10;
             // 
-            // button2
+            // buttonAcceptPlace
             // 
-            this.button2.Location = new System.Drawing.Point(640, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(64, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Accept";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonAcceptPlace.Location = new System.Drawing.Point(640, 19);
+            this.buttonAcceptPlace.Name = "buttonAcceptPlace";
+            this.buttonAcceptPlace.Size = new System.Drawing.Size(64, 23);
+            this.buttonAcceptPlace.TabIndex = 4;
+            this.buttonAcceptPlace.Text = "Accept";
+            this.buttonAcceptPlace.UseVisualStyleBackColor = true;
+            this.buttonAcceptPlace.Click += new System.EventHandler(this.ButtonAcceptPlace_Click);
             // 
-            // button1
+            // buttonAcceptCity
             // 
-            this.button1.Location = new System.Drawing.Point(129, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Accept";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonAcceptCity.Location = new System.Drawing.Point(129, 20);
+            this.buttonAcceptCity.Name = "buttonAcceptCity";
+            this.buttonAcceptCity.Size = new System.Drawing.Size(64, 23);
+            this.buttonAcceptCity.TabIndex = 1;
+            this.buttonAcceptCity.Text = "Accept";
+            this.buttonAcceptCity.UseVisualStyleBackColor = true;
+            this.buttonAcceptCity.Click += new System.EventHandler(this.ButtonAcceptCity_Click);
             // 
-            // textBox2
+            // textBoxNumberOfPlaces
             // 
-            this.textBox2.Location = new System.Drawing.Point(615, 22);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(19, 20);
-            this.textBox2.TabIndex = 6;
+            this.textBoxNumberOfPlaces.Location = new System.Drawing.Point(615, 22);
+            this.textBoxNumberOfPlaces.Name = "textBoxNumberOfPlaces";
+            this.textBoxNumberOfPlaces.Size = new System.Drawing.Size(19, 20);
+            this.textBoxNumberOfPlaces.TabIndex = 6;
             // 
-            // textBox1
+            // textBoxNumberOfCities
             // 
-            this.textBox1.Location = new System.Drawing.Point(98, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(25, 20);
-            this.textBox1.TabIndex = 11;
+            this.textBoxNumberOfCities.Location = new System.Drawing.Point(98, 21);
+            this.textBoxNumberOfCities.Name = "textBoxNumberOfCities";
+            this.textBoxNumberOfCities.Size = new System.Drawing.Size(25, 20);
+            this.textBoxNumberOfCities.TabIndex = 11;
             // 
-            // groupBox1
+            // groupBoxCitiesPlaces
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
-            this.groupBox1.Controls.Add(this.dataGridView2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(710, 353);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cities and places ";
+            this.groupBoxCitiesPlaces.Controls.Add(this.textBoxNumberOfCities);
+            this.groupBoxCitiesPlaces.Controls.Add(this.numericUpDownCity);
+            this.groupBoxCitiesPlaces.Controls.Add(this.dataGridViewPlaces);
+            this.groupBoxCitiesPlaces.Controls.Add(this.label3);
+            this.groupBoxCitiesPlaces.Controls.Add(this.textBoxNumberOfPlaces);
+            this.groupBoxCitiesPlaces.Controls.Add(this.label2);
+            this.groupBoxCitiesPlaces.Controls.Add(this.buttonAcceptPlace);
+            this.groupBoxCitiesPlaces.Controls.Add(this.label1);
+            this.groupBoxCitiesPlaces.Controls.Add(this.buttonAcceptCity);
+            this.groupBoxCitiesPlaces.Controls.Add(this.dataGridViewCities);
+            this.groupBoxCitiesPlaces.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxCitiesPlaces.Name = "groupBoxCitiesPlaces";
+            this.groupBoxCitiesPlaces.Size = new System.Drawing.Size(710, 353);
+            this.groupBoxCitiesPlaces.TabIndex = 12;
+            this.groupBoxCitiesPlaces.TabStop = false;
+            this.groupBoxCitiesPlaces.Text = "Cities and places ";
             // 
-            // groupBox2
+            // groupBoxGoods
             // 
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.dataGridView3);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(12, 371);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(710, 178);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Goods";
+            this.groupBoxGoods.Controls.Add(this.buttonSortPrice);
+            this.groupBoxGoods.Controls.Add(this.buttonSortWeight);
+            this.groupBoxGoods.Controls.Add(this.buttonSortName);
+            this.groupBoxGoods.Controls.Add(this.dataGridViewGoods);
+            this.groupBoxGoods.Controls.Add(this.buttonAdd);
+            this.groupBoxGoods.Controls.Add(this.textBoxWeight);
+            this.groupBoxGoods.Controls.Add(this.label6);
+            this.groupBoxGoods.Controls.Add(this.textBoxPrice);
+            this.groupBoxGoods.Controls.Add(this.label5);
+            this.groupBoxGoods.Controls.Add(this.textBoxName);
+            this.groupBoxGoods.Controls.Add(this.label4);
+            this.groupBoxGoods.Location = new System.Drawing.Point(12, 371);
+            this.groupBoxGoods.Name = "groupBoxGoods";
+            this.groupBoxGoods.Size = new System.Drawing.Size(710, 178);
+            this.groupBoxGoods.TabIndex = 13;
+            this.groupBoxGoods.TabStop = false;
+            this.groupBoxGoods.Text = "Goods";
             // 
             // label4
             // 
@@ -193,19 +195,19 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Name:";
             // 
-            // textBox3
+            // textBoxName
             // 
-            this.textBox3.Location = new System.Drawing.Point(64, 30);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 1;
+            this.textBoxName.Location = new System.Drawing.Point(64, 30);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxName.TabIndex = 1;
             // 
-            // textBox4
+            // textBoxPrice
             // 
-            this.textBox4.Location = new System.Drawing.Point(64, 82);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
+            this.textBoxPrice.Location = new System.Drawing.Point(64, 82);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPrice.TabIndex = 3;
             // 
             // label5
             // 
@@ -216,12 +218,12 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Price:";
             // 
-            // textBox5
+            // textBoxWeight
             // 
-            this.textBox5.Location = new System.Drawing.Point(64, 56);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 5;
+            this.textBoxWeight.Location = new System.Drawing.Point(64, 56);
+            this.textBoxWeight.Name = "textBoxWeight";
+            this.textBoxWeight.Size = new System.Drawing.Size(100, 20);
+            this.textBoxWeight.TabIndex = 5;
             // 
             // label6
             // 
@@ -232,67 +234,71 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "Weight:";
             // 
-            // button3
+            // buttonAdd
             // 
-            this.button3.Location = new System.Drawing.Point(170, 29);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(62, 72);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Add";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonAdd.Location = new System.Drawing.Point(170, 29);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(62, 72);
+            this.buttonAdd.TabIndex = 6;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
-            // dataGridView3
+            // dataGridViewGoods
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AllowUserToResizeRows = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewGoods.AllowUserToAddRows = false;
+            this.dataGridViewGoods.AllowUserToDeleteRows = false;
+            this.dataGridViewGoods.AllowUserToResizeRows = false;
+            this.dataGridViewGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewGoods.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView3.Location = new System.Drawing.Point(404, 19);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.RowTemplate.ReadOnly = true;
-            this.dataGridView3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(300, 144);
-            this.dataGridView3.TabIndex = 12;
+            this.dataGridViewGoods.Location = new System.Drawing.Point(404, 19);
+            this.dataGridViewGoods.Name = "dataGridViewGoods";
+            this.dataGridViewGoods.ReadOnly = true;
+            this.dataGridViewGoods.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewGoods.RowHeadersVisible = false;
+            this.dataGridViewGoods.RowTemplate.ReadOnly = true;
+            this.dataGridViewGoods.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewGoods.Size = new System.Drawing.Size(300, 144);
+            this.dataGridViewGoods.TabIndex = 12;
             // 
-            // button4
+            // buttonSortName
             // 
-            this.button4.Location = new System.Drawing.Point(298, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 44);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Sort by name";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonSortName.Location = new System.Drawing.Point(298, 19);
+            this.buttonSortName.Name = "buttonSortName";
+            this.buttonSortName.Size = new System.Drawing.Size(100, 44);
+            this.buttonSortName.TabIndex = 13;
+            this.buttonSortName.Text = "Sort by name";
+            this.buttonSortName.UseVisualStyleBackColor = true;
+            this.buttonSortName.Click += new System.EventHandler(this.ButtonSortName_Click);
             // 
-            // button5
+            // buttonSortWeight
             // 
-            this.button5.Location = new System.Drawing.Point(298, 69);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 44);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Sort by weight";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonSortWeight.Location = new System.Drawing.Point(298, 69);
+            this.buttonSortWeight.Name = "buttonSortWeight";
+            this.buttonSortWeight.Size = new System.Drawing.Size(100, 44);
+            this.buttonSortWeight.TabIndex = 14;
+            this.buttonSortWeight.Text = "Sort by weight";
+            this.buttonSortWeight.UseVisualStyleBackColor = true;
+            this.buttonSortWeight.Click += new System.EventHandler(this.ButtonSortWeight_Click);
             // 
-            // button6
+            // buttonSortPrice
             // 
-            this.button6.Location = new System.Drawing.Point(298, 119);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 44);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "Sort by price";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonSortPrice.Location = new System.Drawing.Point(298, 119);
+            this.buttonSortPrice.Name = "buttonSortPrice";
+            this.buttonSortPrice.Size = new System.Drawing.Size(100, 44);
+            this.buttonSortPrice.TabIndex = 15;
+            this.buttonSortPrice.Text = "Sort by price";
+            this.buttonSortPrice.UseVisualStyleBackColor = true;
+            this.buttonSortPrice.Click += new System.EventHandler(this.ButtonSortPrice_Click);
             // 
             // Column1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle7;
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Name";
             this.Column1.MaxInputLength = 32;
@@ -324,46 +330,46 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 561);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxGoods);
+            this.Controls.Add(this.groupBoxCitiesPlaces);
             this.Name = "Form1";
             this.Text = "Goods Transportation";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaces)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCity)).EndInit();
+            this.groupBoxCitiesPlaces.ResumeLayout(false);
+            this.groupBoxCitiesPlaces.PerformLayout();
+            this.groupBoxGoods.ResumeLayout(false);
+            this.groupBoxGoods.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGoods)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewCities;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.DataGridView dataGridViewPlaces;
+        private System.Windows.Forms.NumericUpDown numericUpDownCity;
+        private System.Windows.Forms.Button buttonAcceptPlace;
+        private System.Windows.Forms.Button buttonAcceptCity;
+        private System.Windows.Forms.TextBox textBoxNumberOfPlaces;
+        private System.Windows.Forms.TextBox textBoxNumberOfCities;
+        private System.Windows.Forms.GroupBox groupBoxCitiesPlaces;
+        private System.Windows.Forms.GroupBox groupBoxGoods;
+        private System.Windows.Forms.Button buttonSortPrice;
+        private System.Windows.Forms.Button buttonSortWeight;
+        private System.Windows.Forms.Button buttonSortName;
+        private System.Windows.Forms.DataGridView dataGridViewGoods;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.TextBox textBoxWeight;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
