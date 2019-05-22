@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoodsTransportation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,14 +37,14 @@ namespace TestTAProgect
             return Math.Abs(hash % size);
         }
 
-        public void Add(string key, int value)
+        public void Add(Goods good)
         {
             if (capacity >= size) return;
             else
             {
                 capacity++;
-                HashNode node = new HashNode(key, value);
-                int x = HashFunc(key);
+                HashNode node = new HashNode(good);
+                int x = HashFunc(good.name);
 
                 if (hashTable[x] == null)
                 {
@@ -56,9 +57,9 @@ namespace TestTAProgect
                     {
                         entry = entry.Next;
                     }
-                    if (entry.Key == key)
+                    if (entry.Good.name == good.name)
                     {
-                        entry.Data = value;
+                        entry.Good = good;
                     }
                     else
                     {
@@ -68,21 +69,21 @@ namespace TestTAProgect
             }
         }
 
-        public void Delete(string key)
+        public void Delete(Goods good)
         {
-            int y = HashFunc(key);
+            int y = HashFunc(good.name);
             if (hashTable[y] != null)
             {
                 HashNode entry = hashTable[y];
                 //HashNode head = entry;
-                if (entry.Key == key)
+                if (entry.Good.name == good.name)
                 {
-                    entry = null;
+                    hashTable[y] = null;
                     return;
                 }
 
                 HashNode temp = entry.Next;
-                while (entry.Next.Key != key)
+                while (entry.Next.Good.name != good.name)
                 {
                     entry = entry.Next;
                     temp = temp.Next;
@@ -92,21 +93,35 @@ namespace TestTAProgect
             }
         }
 
-        public int Get(string key)
+        public Goods Get(Goods good)
         {
-            int hash = HashFunc(key);
+            int hash = HashFunc(good.name);
             if (hashTable[hash] == null)
             {
-                return -1;
+                return new Goods(null, 0, 0);
             }
             else
             {
                 HashNode entry = hashTable[hash];
-                while(entry.Key != key)
+                while(entry.Good.name != good.name)
                 {
                     entry = entry.Next;
                 }
-                return entry.Data;
+                return entry.Good;
+            }
+        }
+
+        public List<Goods> GetAll()
+        {
+            for (int i = 0; i<size; i++)
+            {
+                if (hashTable[i] != null)
+                {
+                    foreach (Goods good in hashTable[i])
+                    {
+
+                    }
+                }
             }
         }
     }

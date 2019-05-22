@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestTAProgect;
 
 namespace GoodsTransportation
 {
@@ -14,7 +15,7 @@ namespace GoodsTransportation
     {
         private int numberOfCities;
         private int[] numberOfPlaces;
-        private Goods[] goods;  // Hash table
+        HashTable goods;  // Hash table
         private Goods[] sortedGoods;
         public Form1()
         {
@@ -39,6 +40,13 @@ namespace GoodsTransportation
         private void ButtonAdd_Click(object sender, EventArgs e)// TODO
         {
             Goods current = new Goods(textBoxName.Text, int.Parse(textBoxWeight.Text), int.Parse(textBoxPrice.Text));
+            goods = new HashTable(100);
+            goods.Add(current);
+            dataGridViewGoods.RowCount = 10;
+            foreach (DataGridViewRow row in dataGridViewGoods.Rows)
+            {
+                row.Cells[0] = 
+            }
             // Hash table pushes the 'current'
             // dataGrid gets data from the hash table
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoodsTransportation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,38 +9,49 @@ namespace TestTAProgect
 {
     class HashNode
     {
-        string key;
-        int data;
+        //string key;
+        Goods good;
         HashNode next;
 
-        public HashNode(string key, int data)
+        public HashNode(Goods data)
         {
-            this.key = key;
-            this.data = data;
+            this.good = data;
             this.next = null;
         }
 
-        public string Key
-        {
-            get
-            {
-                return key;
-            }
-            set
-            {
-                key = value;
-            }
-        }
+        //public string Key
+        //{
+        //    get
+        //    {
+        //        return key;
+        //    }
+        //    set
+        //    {
+        //        key = value;
+        //    }
+        //}
 
-        public int Data
+        //public int Data
+        //{
+        //    get
+        //    {
+        //        return data;
+        //    }
+        //    set
+        //    {
+        //        data = value;
+        //    }
+        //}
+
+        public Goods Good
         {
             get
             {
-                return data;
+                return good;
             }
             set
             {
-                data = value;
+                good = value;
             }
         }
 
