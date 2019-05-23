@@ -13,6 +13,7 @@ namespace GoodsTransportation
 {
     public partial class Form1 : Form
     {
+        int goodsCount = 0;
         private int numberOfCities;
         private int[] numberOfPlaces;
         HashTable goods;  // Hash table
@@ -40,13 +41,8 @@ namespace GoodsTransportation
         private void ButtonAdd_Click(object sender, EventArgs e)// TODO
         {
             Goods current = new Goods(textBoxName.Text, int.Parse(textBoxWeight.Text), int.Parse(textBoxPrice.Text));
-            goods = new HashTable(100);
             goods.Add(current);
-            dataGridViewGoods.RowCount = 10;
-            foreach (DataGridViewRow row in dataGridViewGoods.Rows)
-            {
-                row.Cells[0] = 
-            }
+            goodsCount++;
             // Hash table pushes the 'current'
             // dataGrid gets data from the hash table
 
@@ -54,36 +50,62 @@ namespace GoodsTransportation
 
         private void ButtonSortName_Click(object sender, EventArgs e)// TODO
         {
-            // sortedGoods gets data from the hash table
-            Array.Sort(sortedGoods, NameComparison());
-            dataGridViewGoods.DataSource = sortedGoods;
+        //    // sortedGoods gets data from the hash table
+        //    Array.Sort(sortedGoods, NameComparison());
+        //    dataGridViewGoods.DataSource = sortedGoods;
         }
 
 
         private void ButtonSortWeight_Click(object sender, EventArgs e)// TODO
         {
-            // sortedGoods gets data from the hash table
-            Array.Sort(sortedGoods, WeightComparison());
-            dataGridViewGoods.DataSource = sortedGoods;
+        //    // sortedGoods gets data from the hash table
+        //    Array.Sort(sortedGoods, WeightComparison());
+        //    dataGridViewGoods.DataSource = sortedGoods;
         }
 
         private void ButtonSortPrice_Click(object sender, EventArgs e)// TODO
         {
-            // sortedGoods gets data from the hash table
-            Array.Sort(sortedGoods, PriceComparison());
-            dataGridViewGoods.DataSource = sortedGoods;
+        //    // sortedGoods gets data from the hash table
+        //    Array.Sort(sortedGoods, PriceComparison());
+        //    dataGridViewGoods.DataSource = sortedGoods;
         }
-        private Comparison<Goods> NameComparison()// TODO
-        {
-            
-        }
-        private Comparison<Goods> WeightComparison()// TODO
-        {
+        //private Comparison<Goods> NameComparison()// TODO
+        //{
 
-        }
-        private Comparison<Goods> PriceComparison()// TODO
-        {
+        //}
+        //private Comparison<Goods> WeightComparison()// TODO
+        //{
 
+        //}
+        //private Comparison<Goods> PriceComparison()// TODO
+        //{
+
+        //}
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            goods = new HashTable(100);
+            //List<Goods> listGoods = new List<Goods>();
+            //listGoods = goods.GetAll();
+            //foreach (Goods good in listGoods)
+            //{
+            //    Console.WriteLine(good);
+            //}
+        }
+
+        private void btnShowGoods_Click(object sender, EventArgs e)
+        {
+            dataGridViewGoods.RowCount = goodsCount;
+            List<Goods> listGoods = new List<Goods>();
+            listGoods = goods.GetAll();
+            int i = 0;
+            foreach (DataGridViewRow row in dataGridViewGoods.Rows)
+            {
+                row.Cells[0].Value = listGoods.ElementAt(i).name;
+                row.Cells[1].Value = listGoods.ElementAt(i).weight;
+                row.Cells[2].Value = listGoods.ElementAt(i).price;
+                i++;
+            }
         }
     }
     /// <summary>

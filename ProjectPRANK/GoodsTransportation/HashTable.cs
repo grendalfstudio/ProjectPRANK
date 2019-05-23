@@ -113,16 +113,20 @@ namespace TestTAProgect
 
         public List<Goods> GetAll()
         {
+            List<Goods> goods = new List<Goods>();
             for (int i = 0; i<size; i++)
             {
                 if (hashTable[i] != null)
                 {
-                    foreach (Goods good in hashTable[i])
+                    HashNode node = hashTable[i];
+                    while (node != null)
                     {
-
+                        goods.Add(node.Good);
+                        node = node.Next;
                     }
                 }
             }
+            return goods;
         }
     }
 }
