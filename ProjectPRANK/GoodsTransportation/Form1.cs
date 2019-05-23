@@ -43,6 +43,9 @@ namespace GoodsTransportation
             Goods current = new Goods(textBoxName.Text, int.Parse(textBoxWeight.Text), int.Parse(textBoxPrice.Text));
             goods.Add(current);
             goodsCount++;
+            textBoxName.Clear();
+            textBoxWeight.Clear();
+            textBoxPrice.Clear();
             // Hash table pushes the 'current'
             // dataGrid gets data from the hash table
 
@@ -50,6 +53,7 @@ namespace GoodsTransportation
 
         private void ButtonSortName_Click(object sender, EventArgs e)// TODO
         {
+            
         //    // sortedGoods gets data from the hash table
         //    Array.Sort(sortedGoods, NameComparison());
         //    dataGridViewGoods.DataSource = sortedGoods;
