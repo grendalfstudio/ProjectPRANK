@@ -31,19 +31,19 @@ namespace GoodsTransportation
 
                 while (i <= j)
                 {
-                    while (Compare(good[i], pivot, property) == -1)// Compare(a, b, property)
+                    while (Compare(good[i], pivot, property) == -1 && i<=j)// Compare(a, b, property)
                     {
+                        
                         ++i;
                     }
 
-                    while (Compare(good[j], pivot, property) == 1)
+                    while (Compare(good[j], pivot, property) == 1 && j>=0)
                     {
                         --j;
                     }
 
                     if (i <= j)
                     {
-                        //Swap<Goods>(ref goods.ElementAt(i), )
                         Goods temp = good[i];
                         good[i] = good[j];
                         good[j] = temp;
@@ -72,7 +72,7 @@ namespace GoodsTransportation
                 case Property.Weight:
                     return (a.weight > b.weight ? 1 : -1);
                 case Property.Name:
-                    return String.Compare(b.name, a.name);
+                    return String.Compare(a.name, b.name);
                 case Property.Price:
                     return (a.price > b.price ? 1 : -1);
                 default:
