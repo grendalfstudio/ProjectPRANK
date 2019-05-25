@@ -10,16 +10,22 @@ namespace GoodsTransportation
     {
         public int n;
         public float[,] a;
-        public BreadthFirstSearch(int n, float[,] a)
+        public int end;
+        public BreadthFirstSearch(int n, float[,] a/*, int end*/)
         {
             this.n = n;
             this.a = a;
+            //this.end = end;
         }        
         public string bfs_search;
+        public int[] predecessor;
 
         public void bfs()
         {
             //draw();
+            int rezCheck;
+            end = n - 1;
+            predecessor = new int[n];
             string temp = "";
             int[,] rebra = new int[n, n];
             //Очередь вершин на рассмотрение
@@ -34,7 +40,7 @@ namespace GoodsTransportation
             {
                 //Выталкиваем из начала списка индекс текущей вершины
                 int index = openVertex.Dequeue();
-                if (index == 5) break;
+                if (index == end) break;
                 //  textBox2.Text += Convert.ToString(index);
                 for (short j = 0; j < n; j++)
                 {
@@ -46,6 +52,9 @@ namespace GoodsTransportation
                         {
                             //Добавить вершину в список на рассмотрение
                             openVertex.Enqueue(j);
+                            /////////
+                            predecessor[j] = index;
+                            /////////
                             rebra[index, j] = 1;
 
 
@@ -55,11 +64,26 @@ namespace GoodsTransportation
 
                 }
                 //Добавляем информацию о вершине в строку вывода
-                temp += " -> " + Convert.ToString(index + 1);
+                //temp += " -> " + Convert.ToString(index + 1);
                 //Добавляем вершину в список уже рассмотренных
                 CloseVertex.Add(index);
             }
-            bfs_search += "Прохождение графа А в ширину:";
+
+            ////////////////
+            rezCheck = end;
+            temp += Convert.ToString(end) + " -> ";
+            while(true)
+            {
+                temp = temp.Insert(0, Convert.ToString(predecessor[rezCheck]) + " -> ") /*+= " -> " + Convert.ToString(predecessor[rezCheck])*/;
+                rezCheck = predecessor[rezCheck];
+                if (rezCheck == 0)
+                {
+                    temp = temp.Remove(temp.Length - 4);
+                    break;
+                }
+            }
+            /////////////////
+            bfs_search += "Rezult: ";
             bfs_search += temp;
         }
 
