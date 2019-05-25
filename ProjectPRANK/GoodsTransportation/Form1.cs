@@ -17,6 +17,7 @@ namespace GoodsTransportation
         int goodsCount = 0;
         private int numberOfCities;
         private int[] numberOfPlaces;
+        private float[,] cityPlan;
         HashTable goods;  // Hash table
         private List <Goods> sortedGoods;
         QuickSort sort;
@@ -37,7 +38,8 @@ namespace GoodsTransportation
 
         private void ButtonAcceptPlace_Click(object sender, EventArgs e)
         {
-            numberOfPlaces[(int)numericUpDownCity.Value] = int.Parse(textBoxNumberOfPlaces.Text);
+            CreateCity();
+
         }
 
         private void ButtonAdd_Click(object sender, EventArgs e)// TODO
@@ -127,6 +129,70 @@ namespace GoodsTransportation
                 row.Cells[2].Value = goods.ElementAt(i).price;
                 i++;
             }
+        }
+
+        private void CreateCity()
+        {
+            //numberOfPlaces[(int)numericUpDownCity.Value] = int.Parse(textBoxNumberOfPlaces.Text);
+            for (int i = 0; i < int.Parse(textBoxNumberOfPlaces.Text); i++)
+            {
+                DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn();
+                {
+                    column.ReadOnly = false;
+                    column.Width = 22;
+                    column.CellTemplate = new DataGridViewCheckBoxCell();
+                }
+
+                dataGridViewPlaces.Columns.Insert(i, column);
+            }
+            dataGridViewPlaces.RowCount = int.Parse(textBoxNumberOfPlaces.Text) + 1;
+            dataGridViewPlaces.AllowUserToAddRows = false;
+            //dataGridViewPlaces.ColumnCount = int.Parse(textBoxNumberOfPlaces.Text); 
+
+            for (int i = 0; i < dataGridViewPlaces.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridViewPlaces.ColumnCount; j++)
+                {
+                    dataGridViewPlaces.Columns[j].Name = j.ToString();
+                    dataGridViewPlaces.Rows[i].HeaderCell.Value = string.Format(i.ToString(), "0");
+                    dataGridViewPlaces[j, i].Value = false;
+                }
+            }
+            //foreach (DataGridViewColumn coll in dataGridViewPlaces.Columns)
+            //{
+            //    coll.ReadOnly = false;
+            //    coll.Width = 22;
+            //    coll.CellTemplate = new DataGridViewCheckBoxCell(false);
+            //}
+        }
+
+        private void ReadCity()
+        {
+            cityPlan = new float[dataGridViewPlaces.ColumnCount, dataGridViewPlaces.RowCount];
+            for (int i = 0; i < dataGridViewPlaces.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridViewPlaces.ColumnCount; j++)
+                {
+                    if (dataGridViewPlaces[j, i].Value.Equals(true))
+                    {
+                        cityPlan[i, j] = 1;
+                    }
+                    else
+                    {
+                        cityPlan[i, j] = 0;
+                    }
+                }
+            }
+        }
+
+        private void btn_bfs_Click(object sender, EventArgs e)
+        {
+            //textBox1.Text = dataGridViewPlaces[1, 1].Value.ToString();
+            ReadCity();
+            BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch(dataGridViewPlaces.RowCount, cityPlan);
+            breadthFirstSearch.bfs();
+            //textBox1.Text = cityPlan[0, 0].ToString();
+            textBox1.Text = breadthFirstSearch.bfs_search;
         }
     }
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewCities = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,6 +41,7 @@
             this.textBoxNumberOfCities = new System.Windows.Forms.TextBox();
             this.groupBoxCitiesPlaces = new System.Windows.Forms.GroupBox();
             this.groupBoxGoods = new System.Windows.Forms.GroupBox();
+            this.btnShowGoods = new System.Windows.Forms.Button();
             this.buttonSortPrice = new System.Windows.Forms.Button();
             this.buttonSortWeight = new System.Windows.Forms.Button();
             this.buttonSortName = new System.Windows.Forms.Button();
@@ -55,7 +56,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnShowGoods = new System.Windows.Forms.Button();
+            this.btn_bfs = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCities)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaces)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCity)).BeginInit();
@@ -67,58 +69,66 @@
             // dataGridViewCities
             // 
             this.dataGridViewCities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCities.Location = new System.Drawing.Point(6, 48);
+            this.dataGridViewCities.Location = new System.Drawing.Point(8, 59);
+            this.dataGridViewCities.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewCities.Name = "dataGridViewCities";
-            this.dataGridViewCities.Size = new System.Drawing.Size(300, 300);
+            this.dataGridViewCities.Size = new System.Drawing.Size(400, 369);
             this.dataGridViewCities.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Location = new System.Drawing.Point(8, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.Size = new System.Drawing.Size(114, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Number of cities:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(477, 24);
+            this.label2.Location = new System.Drawing.Point(636, 30);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 13);
+            this.label2.Size = new System.Drawing.Size(175, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Number of places in a city:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(401, 24);
+            this.label3.Location = new System.Drawing.Point(535, 30);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.Size = new System.Drawing.Size(35, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "City:";
             // 
             // dataGridViewPlaces
             // 
             this.dataGridViewPlaces.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPlaces.Location = new System.Drawing.Point(404, 48);
+            this.dataGridViewPlaces.Location = new System.Drawing.Point(539, 59);
+            this.dataGridViewPlaces.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewPlaces.Name = "dataGridViewPlaces";
-            this.dataGridViewPlaces.Size = new System.Drawing.Size(300, 300);
+            this.dataGridViewPlaces.RowHeadersWidth = 50;
+            this.dataGridViewPlaces.Size = new System.Drawing.Size(399, 263);
             this.dataGridViewPlaces.TabIndex = 9;
             // 
             // numericUpDownCity
             // 
-            this.numericUpDownCity.Location = new System.Drawing.Point(434, 22);
+            this.numericUpDownCity.Location = new System.Drawing.Point(579, 27);
+            this.numericUpDownCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numericUpDownCity.Name = "numericUpDownCity";
-            this.numericUpDownCity.Size = new System.Drawing.Size(37, 20);
+            this.numericUpDownCity.Size = new System.Drawing.Size(49, 22);
             this.numericUpDownCity.TabIndex = 10;
             // 
             // buttonAcceptPlace
             // 
-            this.buttonAcceptPlace.Location = new System.Drawing.Point(640, 19);
+            this.buttonAcceptPlace.Location = new System.Drawing.Point(853, 23);
+            this.buttonAcceptPlace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAcceptPlace.Name = "buttonAcceptPlace";
-            this.buttonAcceptPlace.Size = new System.Drawing.Size(64, 23);
+            this.buttonAcceptPlace.Size = new System.Drawing.Size(85, 28);
             this.buttonAcceptPlace.TabIndex = 4;
             this.buttonAcceptPlace.Text = "Accept";
             this.buttonAcceptPlace.UseVisualStyleBackColor = true;
@@ -126,9 +136,10 @@
             // 
             // buttonAcceptCity
             // 
-            this.buttonAcceptCity.Location = new System.Drawing.Point(129, 20);
+            this.buttonAcceptCity.Location = new System.Drawing.Point(172, 25);
+            this.buttonAcceptCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAcceptCity.Name = "buttonAcceptCity";
-            this.buttonAcceptCity.Size = new System.Drawing.Size(64, 23);
+            this.buttonAcceptCity.Size = new System.Drawing.Size(85, 28);
             this.buttonAcceptCity.TabIndex = 1;
             this.buttonAcceptCity.Text = "Accept";
             this.buttonAcceptCity.UseVisualStyleBackColor = true;
@@ -136,20 +147,24 @@
             // 
             // textBoxNumberOfPlaces
             // 
-            this.textBoxNumberOfPlaces.Location = new System.Drawing.Point(615, 22);
+            this.textBoxNumberOfPlaces.Location = new System.Drawing.Point(820, 27);
+            this.textBoxNumberOfPlaces.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNumberOfPlaces.Name = "textBoxNumberOfPlaces";
-            this.textBoxNumberOfPlaces.Size = new System.Drawing.Size(19, 20);
+            this.textBoxNumberOfPlaces.Size = new System.Drawing.Size(24, 22);
             this.textBoxNumberOfPlaces.TabIndex = 6;
             // 
             // textBoxNumberOfCities
             // 
-            this.textBoxNumberOfCities.Location = new System.Drawing.Point(98, 21);
+            this.textBoxNumberOfCities.Location = new System.Drawing.Point(131, 26);
+            this.textBoxNumberOfCities.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNumberOfCities.Name = "textBoxNumberOfCities";
-            this.textBoxNumberOfCities.Size = new System.Drawing.Size(25, 20);
+            this.textBoxNumberOfCities.Size = new System.Drawing.Size(32, 22);
             this.textBoxNumberOfCities.TabIndex = 11;
             // 
             // groupBoxCitiesPlaces
             // 
+            this.groupBoxCitiesPlaces.Controls.Add(this.textBox1);
+            this.groupBoxCitiesPlaces.Controls.Add(this.btn_bfs);
             this.groupBoxCitiesPlaces.Controls.Add(this.textBoxNumberOfCities);
             this.groupBoxCitiesPlaces.Controls.Add(this.numericUpDownCity);
             this.groupBoxCitiesPlaces.Controls.Add(this.dataGridViewPlaces);
@@ -160,9 +175,11 @@
             this.groupBoxCitiesPlaces.Controls.Add(this.label1);
             this.groupBoxCitiesPlaces.Controls.Add(this.buttonAcceptCity);
             this.groupBoxCitiesPlaces.Controls.Add(this.dataGridViewCities);
-            this.groupBoxCitiesPlaces.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxCitiesPlaces.Location = new System.Drawing.Point(16, 15);
+            this.groupBoxCitiesPlaces.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxCitiesPlaces.Name = "groupBoxCitiesPlaces";
-            this.groupBoxCitiesPlaces.Size = new System.Drawing.Size(710, 353);
+            this.groupBoxCitiesPlaces.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxCitiesPlaces.Size = new System.Drawing.Size(947, 434);
             this.groupBoxCitiesPlaces.TabIndex = 12;
             this.groupBoxCitiesPlaces.TabStop = false;
             this.groupBoxCitiesPlaces.Text = "Cities and places ";
@@ -181,18 +198,32 @@
             this.groupBoxGoods.Controls.Add(this.label5);
             this.groupBoxGoods.Controls.Add(this.textBoxName);
             this.groupBoxGoods.Controls.Add(this.label4);
-            this.groupBoxGoods.Location = new System.Drawing.Point(12, 371);
+            this.groupBoxGoods.Location = new System.Drawing.Point(16, 457);
+            this.groupBoxGoods.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxGoods.Name = "groupBoxGoods";
-            this.groupBoxGoods.Size = new System.Drawing.Size(710, 178);
+            this.groupBoxGoods.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxGoods.Size = new System.Drawing.Size(947, 219);
             this.groupBoxGoods.TabIndex = 13;
             this.groupBoxGoods.TabStop = false;
             this.groupBoxGoods.Text = "Goods";
             // 
+            // btnShowGoods
+            // 
+            this.btnShowGoods.Location = new System.Drawing.Point(227, 146);
+            this.btnShowGoods.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowGoods.Name = "btnShowGoods";
+            this.btnShowGoods.Size = new System.Drawing.Size(83, 28);
+            this.btnShowGoods.TabIndex = 14;
+            this.btnShowGoods.Text = "Show ";
+            this.btnShowGoods.UseVisualStyleBackColor = true;
+            this.btnShowGoods.Click += new System.EventHandler(this.btnShowGoods_Click);
+            // 
             // buttonSortPrice
             // 
-            this.buttonSortPrice.Location = new System.Drawing.Point(298, 119);
+            this.buttonSortPrice.Location = new System.Drawing.Point(397, 146);
+            this.buttonSortPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSortPrice.Name = "buttonSortPrice";
-            this.buttonSortPrice.Size = new System.Drawing.Size(100, 44);
+            this.buttonSortPrice.Size = new System.Drawing.Size(133, 54);
             this.buttonSortPrice.TabIndex = 15;
             this.buttonSortPrice.Text = "Sort by price";
             this.buttonSortPrice.UseVisualStyleBackColor = true;
@@ -200,9 +231,10 @@
             // 
             // buttonSortWeight
             // 
-            this.buttonSortWeight.Location = new System.Drawing.Point(298, 69);
+            this.buttonSortWeight.Location = new System.Drawing.Point(397, 85);
+            this.buttonSortWeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSortWeight.Name = "buttonSortWeight";
-            this.buttonSortWeight.Size = new System.Drawing.Size(100, 44);
+            this.buttonSortWeight.Size = new System.Drawing.Size(133, 54);
             this.buttonSortWeight.TabIndex = 14;
             this.buttonSortWeight.Text = "Sort by weight";
             this.buttonSortWeight.UseVisualStyleBackColor = true;
@@ -210,9 +242,10 @@
             // 
             // buttonSortName
             // 
-            this.buttonSortName.Location = new System.Drawing.Point(298, 19);
+            this.buttonSortName.Location = new System.Drawing.Point(397, 23);
+            this.buttonSortName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSortName.Name = "buttonSortName";
-            this.buttonSortName.Size = new System.Drawing.Size(100, 44);
+            this.buttonSortName.Size = new System.Drawing.Size(133, 54);
             this.buttonSortName.TabIndex = 13;
             this.buttonSortName.Text = "Sort by name";
             this.buttonSortName.UseVisualStyleBackColor = true;
@@ -228,7 +261,8 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridViewGoods.Location = new System.Drawing.Point(404, 19);
+            this.dataGridViewGoods.Location = new System.Drawing.Point(539, 23);
+            this.dataGridViewGoods.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewGoods.Name = "dataGridViewGoods";
             this.dataGridViewGoods.ReadOnly = true;
             this.dataGridViewGoods.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -236,13 +270,13 @@
             this.dataGridViewGoods.RowTemplate.ReadOnly = true;
             this.dataGridViewGoods.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewGoods.Size = new System.Drawing.Size(300, 144);
+            this.dataGridViewGoods.Size = new System.Drawing.Size(400, 177);
             this.dataGridViewGoods.TabIndex = 12;
             // 
             // Column1
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Name";
             this.Column1.MaxInputLength = 32;
@@ -271,9 +305,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(170, 29);
+            this.buttonAdd.Location = new System.Drawing.Point(227, 36);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(62, 72);
+            this.buttonAdd.Size = new System.Drawing.Size(83, 89);
             this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -281,69 +316,83 @@
             // 
             // textBoxWeight
             // 
-            this.textBoxWeight.Location = new System.Drawing.Point(64, 56);
+            this.textBoxWeight.Location = new System.Drawing.Point(85, 69);
+            this.textBoxWeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxWeight.Name = "textBoxWeight";
-            this.textBoxWeight.Size = new System.Drawing.Size(100, 20);
+            this.textBoxWeight.Size = new System.Drawing.Size(132, 22);
             this.textBoxWeight.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 59);
+            this.label6.Location = new System.Drawing.Point(23, 73);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.Size = new System.Drawing.Size(56, 17);
             this.label6.TabIndex = 4;
             this.label6.Text = "Weight:";
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(64, 82);
+            this.textBoxPrice.Location = new System.Drawing.Point(85, 101);
+            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPrice.Size = new System.Drawing.Size(132, 22);
             this.textBoxPrice.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 85);
+            this.label5.Location = new System.Drawing.Point(24, 105);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.Size = new System.Drawing.Size(44, 17);
             this.label5.TabIndex = 2;
             this.label5.Text = "Price:";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(64, 30);
+            this.textBoxName.Location = new System.Drawing.Point(85, 37);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxName.Size = new System.Drawing.Size(132, 22);
             this.textBoxName.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 33);
+            this.label4.Location = new System.Drawing.Point(24, 41);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.Size = new System.Drawing.Size(49, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "Name:";
             // 
-            // btnShowGoods
+            // btn_bfs
             // 
-            this.btnShowGoods.Location = new System.Drawing.Point(170, 119);
-            this.btnShowGoods.Name = "btnShowGoods";
-            this.btnShowGoods.Size = new System.Drawing.Size(62, 23);
-            this.btnShowGoods.TabIndex = 14;
-            this.btnShowGoods.Text = "Show ";
-            this.btnShowGoods.UseVisualStyleBackColor = true;
-            this.btnShowGoods.Click += new System.EventHandler(this.btnShowGoods_Click);
+            this.btn_bfs.Location = new System.Drawing.Point(701, 344);
+            this.btn_bfs.Name = "btn_bfs";
+            this.btn_bfs.Size = new System.Drawing.Size(75, 23);
+            this.btn_bfs.TabIndex = 12;
+            this.btn_bfs.Text = "button1";
+            this.btn_bfs.UseVisualStyleBackColor = true;
+            this.btn_bfs.Click += new System.EventHandler(this.btn_bfs_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(538, 383);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(400, 22);
+            this.textBox1.TabIndex = 13;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 561);
+            this.ClientSize = new System.Drawing.Size(979, 690);
             this.Controls.Add(this.groupBoxGoods);
             this.Controls.Add(this.groupBoxCitiesPlaces);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Goods Transportation";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -388,6 +437,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button btnShowGoods;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btn_bfs;
     }
 }
 
