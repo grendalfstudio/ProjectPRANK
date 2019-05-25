@@ -35,11 +35,9 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(-2, -1);
+            this.label1.Location = new System.Drawing.Point(-1, -1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(547, 264);
+            this.label1.Size = new System.Drawing.Size(561, 303);
             this.label1.TabIndex = 0;
             this.label1.Text = "Перевезення товарів";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -50,12 +48,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GoodsTransportation.Properties.Resources.ImageTransportation;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(544, 261);
+            this.ClientSize = new System.Drawing.Size(560, 300);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormHello";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Перевезення товарів";
+            this.Text = "FormHello";
             this.ResumeLayout(false);
 
         }
