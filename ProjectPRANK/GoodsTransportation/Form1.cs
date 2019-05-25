@@ -15,25 +15,47 @@ namespace GoodsTransportation
     public partial class Form1 : Form
     {
         int goodsCount = 0;
-        private int numberOfCities;
+        private int _numberOfCities;
         private int[] numberOfPlaces;
+        private int[,] _roadMap;
+        private int _srcVertex;
         private float[,] cityPlan;
         HashTable goods;  // Hash table
         private List <Goods> sortedGoods;
         QuickSort sort;
         public Form1()
         {
-            InitializeComponent();
-            numberOfCities = 0;
-            for (int i = 0; i < numberOfCities; i++)
-            {
-                numberOfPlaces[i] = 0;
-            }
+            InitializeComponent();            
         }
 
         private void ButtonAcceptCity_Click(object sender, EventArgs e)
         {
-            numberOfCities = int.Parse(textBoxNumberOfCities.Text);
+            _numberOfCities = int.Parse(textBoxNumberOfCities.Text);
+            _srcVertex = int.Parse(tbSrc.Text);
+            dataGridViewCities.RowCount = _numberOfCities;
+            dataGridViewCities.ColumnCount = _numberOfCities;
+            _roadMap = new int[_numberOfCities, _numberOfCities];
+            buttonAcceptCity.Enabled = false;
+        }
+
+        private void btnSetRoads_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < _numberOfCities; i++)
+            {
+                for (int j = 0; j < _numberOfCities; j++)
+                {
+                    _roadMap[i,j] = Convert.ToInt32(dataGridViewCities[i, j].Value);
+                }
+            }
+        }
+
+        private void btnRes_Click(object sender, EventArgs e)
+        {
+            GFG gfg = new GFG();
+            int[] distances = new int[_numberOfCities];
+            distances = gfg.GetSolution(_roadMap, _srcVertex);;
+            Result result = new Result(distances);
+            result.Show();
         }
 
         private void ButtonAcceptPlace_Click(object sender, EventArgs e)
@@ -193,6 +215,11 @@ namespace GoodsTransportation
             breadthFirstSearch.bfs();
             //textBox1.Text = cityPlan[0, 0].ToString();
             textBox1.Text = breadthFirstSearch.bfs_search;
+        }
+
+        private void btnSetSrc_Click(object sender, EventArgs e)
+        {
+            _srcVertex = int.Parse(tbSrc.Text);
         }
     }
 
