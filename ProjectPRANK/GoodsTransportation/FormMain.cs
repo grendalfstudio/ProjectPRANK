@@ -12,7 +12,7 @@ using static GoodsTransportation.QuickSort;
 
 namespace GoodsTransportation
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         int goodsCount = 0;
         private int _numberOfCities;
@@ -23,7 +23,7 @@ namespace GoodsTransportation
         HashTable goods;  // Hash table
         private List <Goods> sortedGoods;
         QuickSort sort;
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();            
         }
