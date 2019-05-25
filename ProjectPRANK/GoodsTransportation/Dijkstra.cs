@@ -13,13 +13,15 @@ namespace GoodsTransportation
 		// value, from the set of vertices 
 		// not yet included in shortest 
 		// path tree 
-		static int V = 9;
+		private static int V;
+        private static int[] dist;
 
-		int minDistance(int[] dist,
-			bool[] sptSet)
+
+        private int minDistance(int[] dist, bool[] sptSet)
 		{
 			// Initialize min value 
-			int min = int.MaxValue, min_index = -1;
+			int min = int.MaxValue;
+            int min_index = -1;
 
 			for (int v = 0; v < V; v++)
 				if (sptSet[v] == false && dist[v] <= min)
@@ -33,7 +35,7 @@ namespace GoodsTransportation
 
 		// A utility function to print 
 		// the constructed distance array 
-		void printSolution(int[] dist, int n)
+		public void printSolution(int[] dist)
 		{
 			Console.Write("Vertex	 Distance "
 			              + "from Source\n");
@@ -45,9 +47,9 @@ namespace GoodsTransportation
 		// single source shortest path algorithm 
 		// for a graph represented using adjacency 
 		// matrix representation 
-		void dijkstra(int[,] graph, int src)
+		private void dijkstra(int[,] graph, int src)
 		{
-			int[] dist = new int[V]; // The output array. dist[i] 
+			dist = new int[V]; // The output array. dist[i] 
 			// will hold the shortest 
 			// distance from src to i 
 
@@ -90,13 +92,18 @@ namespace GoodsTransportation
 					// to v, and total weight of path 
 					// from src to v through u is smaller 
 					// than current value of dist[v] 
-					if (!sptSet[v] && graph[u, v] != 0 &&
-					    dist[u] != int.MaxValue && dist[u] + graph[u, v] < dist[v])
+					if (!sptSet[v] && graph[u, v] != 0 && dist[u] != int.MaxValue && dist[u] + graph[u, v] < dist[v])
 						dist[v] = dist[u] + graph[u, v];
-			}
+			}                  
 
-			// print the constructed distance array 
-			printSolution(dist, V);
+			//print the constructed distance array 
+			//printSolution(dist, V);
 		}
-	}
+        public int[] GetSolution(int[,] graph, int src)
+        {
+            V = (int)Math.Sqrt(graph.Length);
+            this.dijkstra(graph, src);
+            return dist;
+        }
+    }
 }
