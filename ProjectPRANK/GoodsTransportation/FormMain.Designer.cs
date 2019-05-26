@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewCities = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.dataGridViewPlaces = new System.Windows.Forms.DataGridView();
-            this.numericUpDownCity = new System.Windows.Forms.NumericUpDown();
             this.buttonAcceptPlace = new System.Windows.Forms.Button();
             this.buttonAcceptCity = new System.Windows.Forms.Button();
             this.textBoxNumberOfPlaces = new System.Windows.Forms.TextBox();
@@ -64,7 +62,6 @@
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCities)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaces)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCity)).BeginInit();
             this.groupBoxCitiesPlaces.SuspendLayout();
             this.groupBoxGoods.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGoods)).BeginInit();
@@ -100,20 +97,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(477, 24);
+            this.label2.Location = new System.Drawing.Point(401, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Number of places in a city:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(401, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "City:";
             // 
             // dataGridViewPlaces
             // 
@@ -123,17 +111,12 @@
             this.dataGridViewPlaces.RowHeadersWidth = 50;
             this.dataGridViewPlaces.Size = new System.Drawing.Size(299, 214);
             this.dataGridViewPlaces.TabIndex = 9;
-            // 
-            // numericUpDownCity
-            // 
-            this.numericUpDownCity.Location = new System.Drawing.Point(434, 22);
-            this.numericUpDownCity.Name = "numericUpDownCity";
-            this.numericUpDownCity.Size = new System.Drawing.Size(37, 20);
-            this.numericUpDownCity.TabIndex = 10;
+            this.dataGridViewPlaces.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewPlaces_CellBeginEdit);
+            this.dataGridViewPlaces.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlaces_CellValueChanged);
             // 
             // buttonAcceptPlace
             // 
-            this.buttonAcceptPlace.Location = new System.Drawing.Point(640, 19);
+            this.buttonAcceptPlace.Location = new System.Drawing.Point(639, 19);
             this.buttonAcceptPlace.Name = "buttonAcceptPlace";
             this.buttonAcceptPlace.Size = new System.Drawing.Size(64, 23);
             this.buttonAcceptPlace.TabIndex = 4;
@@ -143,7 +126,7 @@
             // 
             // buttonAcceptCity
             // 
-            this.buttonAcceptCity.Location = new System.Drawing.Point(231, 19);
+            this.buttonAcceptCity.Location = new System.Drawing.Point(242, 19);
             this.buttonAcceptCity.Name = "buttonAcceptCity";
             this.buttonAcceptCity.Size = new System.Drawing.Size(64, 23);
             this.buttonAcceptCity.TabIndex = 1;
@@ -153,7 +136,8 @@
             // 
             // textBoxNumberOfPlaces
             // 
-            this.textBoxNumberOfPlaces.Location = new System.Drawing.Point(615, 22);
+            this.textBoxNumberOfPlaces.Location = new System.Drawing.Point(539, 22);
+            this.textBoxNumberOfPlaces.MaxLength = 1;
             this.textBoxNumberOfPlaces.Name = "textBoxNumberOfPlaces";
             this.textBoxNumberOfPlaces.Size = new System.Drawing.Size(19, 20);
             this.textBoxNumberOfPlaces.TabIndex = 6;
@@ -161,6 +145,7 @@
             // textBoxNumberOfCities
             // 
             this.textBoxNumberOfCities.Location = new System.Drawing.Point(98, 21);
+            this.textBoxNumberOfCities.MaxLength = 2;
             this.textBoxNumberOfCities.Name = "textBoxNumberOfCities";
             this.textBoxNumberOfCities.Size = new System.Drawing.Size(25, 20);
             this.textBoxNumberOfCities.TabIndex = 11;
@@ -173,9 +158,7 @@
             this.groupBoxCitiesPlaces.Controls.Add(this.textBox1);
             this.groupBoxCitiesPlaces.Controls.Add(this.btn_bfs);
             this.groupBoxCitiesPlaces.Controls.Add(this.textBoxNumberOfCities);
-            this.groupBoxCitiesPlaces.Controls.Add(this.numericUpDownCity);
             this.groupBoxCitiesPlaces.Controls.Add(this.dataGridViewPlaces);
-            this.groupBoxCitiesPlaces.Controls.Add(this.label3);
             this.groupBoxCitiesPlaces.Controls.Add(this.textBoxNumberOfPlaces);
             this.groupBoxCitiesPlaces.Controls.Add(this.label2);
             this.groupBoxCitiesPlaces.Controls.Add(this.buttonAcceptPlace);
@@ -194,20 +177,21 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(129, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.Size = new System.Drawing.Size(81, 13);
             this.label7.TabIndex = 16;
-            this.label7.Text = "Start city #:";
+            this.label7.Text = "Start city (1, ...):";
             // 
             // tbSrc
             // 
-            this.tbSrc.Location = new System.Drawing.Point(200, 21);
+            this.tbSrc.Location = new System.Drawing.Point(211, 21);
+            this.tbSrc.MaxLength = 2;
             this.tbSrc.Name = "tbSrc";
             this.tbSrc.Size = new System.Drawing.Size(25, 20);
             this.tbSrc.TabIndex = 15;
             // 
             // btnSetRoads
             // 
-            this.btnSetRoads.BackColor = System.Drawing.Color.Red;
+            this.btnSetRoads.BackColor = System.Drawing.Color.LightCoral;
             this.btnSetRoads.Location = new System.Drawing.Point(312, 48);
             this.btnSetRoads.Name = "btnSetRoads";
             this.btnSetRoads.Size = new System.Drawing.Size(75, 300);
@@ -218,19 +202,19 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(404, 311);
+            this.textBox1.Location = new System.Drawing.Point(404, 306);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(301, 20);
+            this.textBox1.Size = new System.Drawing.Size(299, 20);
             this.textBox1.TabIndex = 13;
             // 
             // btn_bfs
             // 
             this.btn_bfs.AutoSize = true;
-            this.btn_bfs.Location = new System.Drawing.Point(526, 266);
+            this.btn_bfs.Location = new System.Drawing.Point(404, 266);
             this.btn_bfs.Margin = new System.Windows.Forms.Padding(2);
             this.btn_bfs.Name = "btn_bfs";
-            this.btn_bfs.Size = new System.Drawing.Size(82, 36);
+            this.btn_bfs.Size = new System.Drawing.Size(299, 36);
             this.btn_bfs.TabIndex = 12;
             this.btn_bfs.Text = "Show rezult";
             this.btn_bfs.UseVisualStyleBackColor = true;
@@ -260,12 +244,12 @@
             // 
             // btnRes
             // 
-            this.btnRes.BackColor = System.Drawing.Color.Red;
+            this.btnRes.BackColor = System.Drawing.Color.LightCoral;
             this.btnRes.Enabled = false;
             this.btnRes.ForeColor = System.Drawing.Color.Black;
-            this.btnRes.Location = new System.Drawing.Point(9, 119);
+            this.btnRes.Location = new System.Drawing.Point(21, 119);
             this.btnRes.Name = "btnRes";
-            this.btnRes.Size = new System.Drawing.Size(155, 59);
+            this.btnRes.Size = new System.Drawing.Size(271, 44);
             this.btnRes.TabIndex = 16;
             this.btnRes.Text = "SHOW ANSWER";
             this.btnRes.UseVisualStyleBackColor = false;
@@ -273,9 +257,9 @@
             // 
             // btnShowGoods
             // 
-            this.btnShowGoods.Location = new System.Drawing.Point(170, 119);
+            this.btnShowGoods.Location = new System.Drawing.Point(170, 69);
             this.btnShowGoods.Name = "btnShowGoods";
-            this.btnShowGoods.Size = new System.Drawing.Size(62, 23);
+            this.btnShowGoods.Size = new System.Drawing.Size(122, 33);
             this.btnShowGoods.TabIndex = 14;
             this.btnShowGoods.Text = "Show ";
             this.btnShowGoods.UseVisualStyleBackColor = true;
@@ -334,8 +318,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Name";
             this.Column1.MaxInputLength = 32;
@@ -366,7 +350,7 @@
             // 
             this.buttonAdd.Location = new System.Drawing.Point(170, 29);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(62, 72);
+            this.buttonAdd.Size = new System.Drawing.Size(122, 34);
             this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -427,13 +411,13 @@
             this.ClientSize = new System.Drawing.Size(734, 561);
             this.Controls.Add(this.groupBoxGoods);
             this.Controls.Add(this.groupBoxCitiesPlaces);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Goods Transportation";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCities)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaces)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCity)).EndInit();
             this.groupBoxCitiesPlaces.ResumeLayout(false);
             this.groupBoxCitiesPlaces.PerformLayout();
             this.groupBoxGoods.ResumeLayout(false);
@@ -448,9 +432,7 @@
         private System.Windows.Forms.DataGridView dataGridViewCities;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridViewPlaces;
-        private System.Windows.Forms.NumericUpDown numericUpDownCity;
         private System.Windows.Forms.Button buttonAcceptPlace;
         private System.Windows.Forms.Button buttonAcceptCity;
         private System.Windows.Forms.TextBox textBoxNumberOfPlaces;

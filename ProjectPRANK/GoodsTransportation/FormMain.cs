@@ -23,7 +23,8 @@ namespace GoodsTransportation
         private int _numberOfCities;
         private int _row;
         private int _cell;
-
+        private int _rowPlaces;
+        private int _cellPlaces;
         private float[,] cityPlan;
         private HashTable goods;
         private List<Goods> sortedGoods;
@@ -32,6 +33,8 @@ namespace GoodsTransportation
         public FormMain()
         {
             InitializeComponent();
+            goods = new HashTable(100);
+            sort = new QuickSort();
         }
 
         private void ButtonAcceptCity_Click(object sender, EventArgs e)
@@ -41,16 +44,22 @@ namespace GoodsTransportation
                 _numberOfCities = int.Parse(textBoxNumberOfCities.Text);
                 _srcVertex = int.Parse(tbSrc.Text) - 1;
                 if (_srcVertex < 0 || _srcVertex > _numberOfCities - 1)
-                    throw new ArgumentOutOfRangeException(
-                        "Start city num must be less than or equals to number of cities ");
+                    throw new ArgumentOutOfRangeException("Start city num must be less than or equal to number of cities ");
                 dataGridViewCities.RowCount = _numberOfCities;
                 dataGridViewCities.ColumnCount = _numberOfCities;
                 _roadMap = new int[_numberOfCities, _numberOfCities];
 
                 for (var i = 0; i < _numberOfCities; i++)
-                for (var j = 0; j < _numberOfCities; j++)
-                    if (i == j)
-                        dataGridViewCities[i, j].Value = 0;
+                {
+                    for (var j = 0; j < _numberOfCities; j++)
+                    {
+                        if (i == j)
+                        {
+                            dataGridViewCities[i, j].Value = 0;
+                            dataGridViewCities[i, j].ReadOnly = true;
+                        }
+                    }
+                }
 
                 buttonAcceptCity.Enabled = false;
             }
@@ -63,8 +72,12 @@ namespace GoodsTransportation
         private void btnSetRoads_Click(object sender, EventArgs e)
         {
             for (var i = 0; i < _numberOfCities; i++)
-            for (var j = 0; j < _numberOfCities; j++)
-                _roadMap[i, j] = Convert.ToInt32(dataGridViewCities[i, j].Value);
+            {
+                for (var j = 0; j < _numberOfCities; j++)
+                {
+                    _roadMap[i, j] = Convert.ToInt32(dataGridViewCities[i, j].Value);
+                }
+            }
             btnRes.Enabled = true;
         }
 
@@ -122,12 +135,6 @@ namespace GoodsTransportation
             Output(sortedGoods);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            goods = new HashTable(100);
-            sort = new QuickSort();
-        }
-
         private void btnShowGoods_Click(object sender, EventArgs e)
         {
             dataGridViewGoods.RowCount = goodsCount;
@@ -168,12 +175,21 @@ namespace GoodsTransportation
                 dataGridViewPlaces.AllowUserToAddRows = false;
 
                 for (var i = 0; i < dataGridViewPlaces.RowCount; i++)
-                for (var j = 0; j < dataGridViewPlaces.ColumnCount; j++)
                 {
-                    dataGridViewPlaces.Columns[j].Name = j.ToString();
-                    dataGridViewPlaces.Rows[i].HeaderCell.Value = string.Format(i.ToString(), "0");
-                    dataGridViewPlaces[j, i].Value = false;
+                    for (var j = 0; j < dataGridViewPlaces.ColumnCount; j++)
+                    {
+                        dataGridViewPlaces.Columns[j].Name = j.ToString();
+                        dataGridViewPlaces.Rows[i].HeaderCell.Value = string.Format(i.ToString(), "0");
+                        dataGridViewPlaces[j, i].Value = false;
+
+                        if (i == j)
+                        {
+                            dataGridViewPlaces[i, j].ReadOnly = true;
+                        }
+                    }
                 }
+
+                buttonAcceptPlace.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -209,6 +225,17 @@ namespace GoodsTransportation
         private void dataGridViewCities_CurrentCellChanged(object sender, EventArgs e)
         {
             dataGridViewCities[_row, _cell].Value = dataGridViewCities[_cell, _row].Value;
+        }
+
+        private void dataGridViewPlaces_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridViewPlaces[_rowPlaces, _cellPlaces].Value = dataGridViewPlaces[_cellPlaces, _rowPlaces].Value;
+        }
+
+        private void dataGridViewPlaces_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            _rowPlaces = dataGridViewPlaces.SelectedCells[0].RowIndex;
+            _cellPlaces = dataGridViewPlaces.SelectedCells[0].ColumnIndex;
         }
     }
 
