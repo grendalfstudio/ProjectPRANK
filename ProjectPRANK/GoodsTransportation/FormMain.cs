@@ -79,6 +79,7 @@ namespace GoodsTransportation
                 }
             }
             btnRes.Enabled = true;
+            MessageBox.Show("Setted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnRes_Click(object sender, EventArgs e)
