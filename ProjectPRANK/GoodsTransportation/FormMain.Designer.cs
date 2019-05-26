@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewCities = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -207,12 +207,13 @@
             // 
             // btnSetRoads
             // 
+            this.btnSetRoads.BackColor = System.Drawing.Color.Red;
             this.btnSetRoads.Location = new System.Drawing.Point(312, 48);
             this.btnSetRoads.Name = "btnSetRoads";
             this.btnSetRoads.Size = new System.Drawing.Size(75, 300);
             this.btnSetRoads.TabIndex = 14;
-            this.btnSetRoads.Text = "Set road map";
-            this.btnSetRoads.UseVisualStyleBackColor = true;
+            this.btnSetRoads.Text = "SET ROAD MAP";
+            this.btnSetRoads.UseVisualStyleBackColor = false;
             this.btnSetRoads.Click += new System.EventHandler(this.btnSetRoads_Click);
             // 
             // textBox1
@@ -333,8 +334,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Name";
             this.Column1.MaxInputLength = 32;
