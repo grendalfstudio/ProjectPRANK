@@ -27,7 +27,7 @@ namespace GoodsTransportation
             end = n - 1;
             predecessor = new int[n];
             string temp = "";
-            int[,] rebra = new int[n, n];
+            int[,] edges = new int[n, n];
             //Очередь вершин на рассмотрение
             Queue<int> openVertex = new Queue<int>();
             Queue<int> Way = new Queue<int>();
@@ -55,12 +55,12 @@ namespace GoodsTransportation
                             /////////
                             predecessor[j] = index;
                             /////////
-                            rebra[index, j] = 1;
+                            edges[index, j] = 1;
 
 
                         }
                     }
-                    else rebra[index, j] = 0;
+                    else edges[index, j] = 0;
 
                 }
                 //Добавляем информацию о вершине в строку вывода
