@@ -6,34 +6,38 @@ using System.Threading.Tasks;
 
 namespace GoodsTransportation
 {
-    class QuickSort
+    internal class QuickSort
     {
         public enum Property
         {
-            Weight, Name, Price
+            Weight,
+            Name,
+            Price
         }
+
         public void Sort(List<Goods> goods, int left, int right, Property property)
         {
-            int i = left;
-            int j = right;
-            Goods middle = goods[(left + right) / 2];
+            var i = left;
+            var j = right;
+            var middle = goods[(left + right) / 2];
             do
             {
                 while (Compare(goods[i], middle, property) == 1) i++;
                 while (Compare(goods[j], middle, property) == -1) j--;
                 if (i <= j)
                 {
-                    Goods temp = goods[i];
+                    var temp = goods[i];
                     goods[i] = goods[j];
                     goods[j] = temp;
                     ++i;
                     --j;
                 }
-            }
-            while (j > i);
+            } while (j > i);
+
             if (j > left) Sort(goods, left, j, property);
             if (i < right) Sort(goods, i, right, property);
         }
+
         private int Compare(Goods a, Goods b, Property property)
         {
             switch (property)
@@ -43,7 +47,7 @@ namespace GoodsTransportation
                     else if (a.weight > b.weight) return -1;
                     else return 0;
                 case Property.Name:
-                    return String.Compare(b.name, a.name);
+                    return string.Compare(b.name, a.name);
                 case Property.Price:
                     if (a.price < b.price) return 1;
                     else if (a.price > b.price) return -1;

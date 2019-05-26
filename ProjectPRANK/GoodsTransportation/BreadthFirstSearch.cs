@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace GoodsTransportation
 {
-    class BreadthFirstSearch
+    internal class BreadthFirstSearch
     {
         public int n;
         public float[,] a;
         public int end;
-        public BreadthFirstSearch(int n, float[,] a/*, int end*/)
+
+        public BreadthFirstSearch(int n, float[,] a /*, int end*/)
         {
             this.n = n;
             this.a = a;
             //this.end = end;
-        }        
+        }
+
         public string bfs_search;
         public int[] predecessor;
 
@@ -26,24 +28,23 @@ namespace GoodsTransportation
             int rezCheck;
             end = n - 1;
             predecessor = new int[n];
-            string temp = "";
-            int[,] edges = new int[n, n];
+            var temp = "";
+            var edges = new int[n, n];
             //Очередь вершин на рассмотрение
-            Queue<int> openVertex = new Queue<int>();
-            Queue<int> Way = new Queue<int>();
+            var openVertex = new Queue<int>();
+            var Way = new Queue<int>();
             //Список уже рассмотренных вершин
-            List<int> CloseVertex = new List<int>();
+            var CloseVertex = new List<int>();
             //Начинаем обход с 1й вершины
             openVertex.Enqueue(0);
             //До тех пор, пока не обошли все вершины
             while (openVertex.Count != 0)
             {
                 //Выталкиваем из начала списка индекс текущей вершины
-                int index = openVertex.Dequeue();
+                var index = openVertex.Dequeue();
                 if (index == end) break;
                 //  textBox2.Text += Convert.ToString(index);
                 for (short j = 0; j < n; j++)
-                {
                     //Если ребро не нулевое 
                     if (a[index, j] != 0)
                     {
@@ -56,13 +57,13 @@ namespace GoodsTransportation
                             predecessor[j] = index;
                             /////////
                             edges[index, j] = 1;
-
-
                         }
                     }
-                    else edges[index, j] = 0;
+                    else
+                    {
+                        edges[index, j] = 0;
+                    }
 
-                }
                 //Добавляем информацию о вершине в строку вывода
                 //temp += " -> " + Convert.ToString(index + 1);
                 //Добавляем вершину в список уже рассмотренных
@@ -72,9 +73,11 @@ namespace GoodsTransportation
             ////////////////
             rezCheck = end;
             temp += Convert.ToString(end) + " -> ";
-            while(true)
+            while (true)
             {
-                temp = temp.Insert(0, Convert.ToString(predecessor[rezCheck]) + " -> ") /*+= " -> " + Convert.ToString(predecessor[rezCheck])*/;
+                temp = temp.Insert(0,
+                    Convert.ToString(predecessor[rezCheck]) +
+                    " -> ") /*+= " -> " + Convert.ToString(predecessor[rezCheck])*/;
                 rezCheck = predecessor[rezCheck];
                 if (rezCheck == 0)
                 {
@@ -82,6 +85,7 @@ namespace GoodsTransportation
                     break;
                 }
             }
+
             /////////////////
             bfs_search += "Rezult: ";
             bfs_search += temp;

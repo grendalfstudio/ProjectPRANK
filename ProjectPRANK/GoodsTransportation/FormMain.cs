@@ -15,9 +15,9 @@ namespace GoodsTransportation
 {
     public partial class FormMain : Form
     {
-        int goodsCount = 0;
+        private int goodsCount = 0;
         private int[] numberOfPlaces;
-        
+
         private int[,] _roadMap;
         private int _srcVertex;
         private int _numberOfCities;
@@ -25,128 +25,120 @@ namespace GoodsTransportation
         private int _cell;
 
         private float[,] cityPlan;
-        HashTable goods;  // Hash table
-        private List <Goods> sortedGoods;
-        QuickSort sort;
+        private HashTable goods;
+        private List<Goods> sortedGoods;
+        private QuickSort sort;
+
         public FormMain()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void ButtonAcceptCity_Click(object sender, EventArgs e)
         {
-            _numberOfCities = int.Parse(textBoxNumberOfCities.Text);
-            _srcVertex = int.Parse(tbSrc.Text) - 1;
-            dataGridViewCities.RowCount = _numberOfCities;
-            dataGridViewCities.ColumnCount = _numberOfCities;
-            _roadMap = new int[_numberOfCities, _numberOfCities];
-
-            for (int i = 0; i < _numberOfCities; i++)
+            try
             {
-                for (int j = 0; j < _numberOfCities; j++)
-                {
-                    if (i == j) dataGridViewCities[i, j].Value = 0;
-                }
-            }
+                _numberOfCities = int.Parse(textBoxNumberOfCities.Text);
+                _srcVertex = int.Parse(tbSrc.Text) - 1;
+                if (_srcVertex < 0 || _srcVertex > _numberOfCities - 1)
+                    throw new ArgumentOutOfRangeException(
+                        "Start city num must be less than or equals to number of cities ");
+                dataGridViewCities.RowCount = _numberOfCities;
+                dataGridViewCities.ColumnCount = _numberOfCities;
+                _roadMap = new int[_numberOfCities, _numberOfCities];
 
-            buttonAcceptCity.Enabled = false;
+                for (var i = 0; i < _numberOfCities; i++)
+                for (var j = 0; j < _numberOfCities; j++)
+                    if (i == j)
+                        dataGridViewCities[i, j].Value = 0;
+
+                buttonAcceptCity.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSetRoads_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < _numberOfCities; i++)
-            {
-                for (int j = 0; j < _numberOfCities; j++)
-                {
-                    _roadMap[i,j] = Convert.ToInt32(dataGridViewCities[i, j].Value);
-                }
-            }
+            for (var i = 0; i < _numberOfCities; i++)
+            for (var j = 0; j < _numberOfCities; j++)
+                _roadMap[i, j] = Convert.ToInt32(dataGridViewCities[i, j].Value);
             btnRes.Enabled = true;
         }
 
         private void btnRes_Click(object sender, EventArgs e)
         {
-            GFG gfg = new GFG();
-            int[] distances = new int[_numberOfCities];
-            distances = gfg.GetSolution(_roadMap, _srcVertex);;
-            Result result = new Result(distances);
+            var gfg = new GFG();
+            var distances = new int[_numberOfCities];
+            distances = gfg.GetSolution(_roadMap, _srcVertex);
+            ;
+            var result = new Result(distances);
             result.Show();
         }
 
         private void ButtonAcceptPlace_Click(object sender, EventArgs e)
         {
             CreateCity();
-
         }
 
-        private void ButtonAdd_Click(object sender, EventArgs e)// TODO
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            Goods current = new Goods(textBoxName.Text, int.Parse(textBoxWeight.Text), int.Parse(textBoxPrice.Text));
-            goods.Add(current);
-            goodsCount++;
-            textBoxName.Clear();
-            textBoxWeight.Clear();
-            textBoxPrice.Clear();
-            // Hash table pushes the 'current'
-            // dataGrid gets data from the hash table
-
+            try
+            {
+                var current = new Goods(textBoxName.Text, int.Parse(textBoxWeight.Text), int.Parse(textBoxPrice.Text));
+                goods.Add(current);
+                goodsCount++;
+                textBoxName.Clear();
+                textBoxWeight.Clear();
+                textBoxPrice.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void ButtonSortName_Click(object sender, EventArgs e)// TODO
-        {
-            sortedGoods = goods.GetAll();
-            sort.Sort(sortedGoods, 0, sortedGoods.Count - 1, Property.Name);// Changed
-            Output(sortedGoods);
-            //    // sortedGoods gets data from the hash table
-            //    Array.Sort(sortedGoods, NameComparison());
-            //    dataGridViewGoods.DataSource = sortedGoods;
-        }
-
-
-        private void ButtonSortWeight_Click(object sender, EventArgs e)// TODO
+        private void ButtonSortName_Click(object sender, EventArgs e)
         {
             sortedGoods = goods.GetAll();
-            sort.Sort(sortedGoods, 0, sortedGoods.Count - 1, Property.Weight); // Changed
+            sort.Sort(sortedGoods, 0, sortedGoods.Count - 1, Property.Name);
             Output(sortedGoods);
-        //    // sortedGoods gets data from the hash table
-        //    Array.Sort(sortedGoods, WeightComparison());
-        //    dataGridViewGoods.DataSource = sortedGoods;
         }
 
-        private void ButtonSortPrice_Click(object sender, EventArgs e)// TODO
+
+        private void ButtonSortWeight_Click(object sender, EventArgs e)
+        {
+            sortedGoods = goods.GetAll();
+            sort.Sort(sortedGoods, 0, sortedGoods.Count - 1, Property.Weight);
+            Output(sortedGoods);
+        }
+
+        private void ButtonSortPrice_Click(object sender, EventArgs e)
         {
             sortedGoods = goods.GetAll();
             sort.Sort(sortedGoods, 0, sortedGoods.Count - 1, Property.Price);
             Output(sortedGoods);
-            //    // sortedGoods gets data from the hash table
-            //    Array.Sort(sortedGoods, PriceComparison());
-            //    dataGridViewGoods.DataSource = sortedGoods;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             goods = new HashTable(100);
             sort = new QuickSort();
-            
-            //List<Goods> listGoods = new List<Goods>();
-            //listGoods = goods.GetAll();
-            //foreach (Goods good in listGoods)
-            //{
-            //    Console.WriteLine(good);
-            //}
         }
 
         private void btnShowGoods_Click(object sender, EventArgs e)
         {
             dataGridViewGoods.RowCount = goodsCount;
-            List<Goods> listGoods = new List<Goods>();
+            var listGoods = new List<Goods>();
             listGoods = goods.GetAll();
             Output(listGoods);
         }
 
         private void Output(List<Goods> goods)
         {
-            int i = 0;
+            var i = 0;
             foreach (DataGridViewRow row in dataGridViewGoods.Rows)
             {
                 row.Cells[0].Value = goods.ElementAt(i).name;
@@ -158,71 +150,54 @@ namespace GoodsTransportation
 
         private void CreateCity()
         {
-            //numberOfPlaces[(int)numericUpDownCity.Value] = int.Parse(textBoxNumberOfPlaces.Text);
-            for (int i = 0; i < int.Parse(textBoxNumberOfPlaces.Text); i++)
+            try
             {
-                DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn();
+                for (var i = 0; i < int.Parse(textBoxNumberOfPlaces.Text); i++)
                 {
-                    column.ReadOnly = false;
-                    column.Width = 22;
-                    column.CellTemplate = new DataGridViewCheckBoxCell();
+                    var column = new DataGridViewCheckBoxColumn();
+                    {
+                        column.ReadOnly = false;
+                        column.Width = 22;
+                        column.CellTemplate = new DataGridViewCheckBoxCell();
+                    }
+
+                    dataGridViewPlaces.Columns.Insert(i, column);
                 }
 
-                dataGridViewPlaces.Columns.Insert(i, column);
-            }
-            dataGridViewPlaces.RowCount = int.Parse(textBoxNumberOfPlaces.Text) + 1;
-            dataGridViewPlaces.AllowUserToAddRows = false;
-            //dataGridViewPlaces.ColumnCount = int.Parse(textBoxNumberOfPlaces.Text); 
+                dataGridViewPlaces.RowCount = int.Parse(textBoxNumberOfPlaces.Text) + 1;
+                dataGridViewPlaces.AllowUserToAddRows = false;
 
-            for (int i = 0; i < dataGridViewPlaces.RowCount; i++)
-            {
-                for (int j = 0; j < dataGridViewPlaces.ColumnCount; j++)
+                for (var i = 0; i < dataGridViewPlaces.RowCount; i++)
+                for (var j = 0; j < dataGridViewPlaces.ColumnCount; j++)
                 {
                     dataGridViewPlaces.Columns[j].Name = j.ToString();
                     dataGridViewPlaces.Rows[i].HeaderCell.Value = string.Format(i.ToString(), "0");
                     dataGridViewPlaces[j, i].Value = false;
                 }
             }
-            //foreach (DataGridViewColumn coll in dataGridViewPlaces.Columns)
-            //{
-            //    coll.ReadOnly = false;
-            //    coll.Width = 22;
-            //    coll.CellTemplate = new DataGridViewCheckBoxCell(false);
-            //}
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ReadCity()
         {
             cityPlan = new float[dataGridViewPlaces.ColumnCount, dataGridViewPlaces.RowCount];
-            for (int i = 0; i < dataGridViewPlaces.RowCount; i++)
-            {
-                for (int j = 0; j < dataGridViewPlaces.ColumnCount; j++)
-                {
-                    if (dataGridViewPlaces[j, i].Value.Equals(true))
-                    {
-                        cityPlan[i, j] = 1;
-                    }
-                    else
-                    {
-                        cityPlan[i, j] = 0;
-                    }
-                }
-            }
+            for (var i = 0; i < dataGridViewPlaces.RowCount; i++)
+            for (var j = 0; j < dataGridViewPlaces.ColumnCount; j++)
+                if (dataGridViewPlaces[j, i].Value.Equals(true))
+                    cityPlan[i, j] = 1;
+                else
+                    cityPlan[i, j] = 0;
         }
 
         private void btn_bfs_Click(object sender, EventArgs e)
         {
-            //textBox1.Text = dataGridViewPlaces[1, 1].Value.ToString();
             ReadCity();
-            BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch(dataGridViewPlaces.RowCount, cityPlan);
+            var breadthFirstSearch = new BreadthFirstSearch(dataGridViewPlaces.RowCount, cityPlan);
             breadthFirstSearch.bfs();
-            //textBox1.Text = cityPlan[0, 0].ToString();
             textBox1.Text = breadthFirstSearch.bfs_search;
-        }
-
-        private void btnSetSrc_Click(object sender, EventArgs e)
-        {
-            _srcVertex = int.Parse(tbSrc.Text);
         }
 
         private void dataGridViewCities_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -245,6 +220,7 @@ namespace GoodsTransportation
         public string name;
         public int weight;
         public int price;
+
         public Goods(string name, int weight, int price)
         {
             this.name = name;

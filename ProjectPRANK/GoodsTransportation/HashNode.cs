@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace TestTAProgect
 {
-    class HashNode
+    internal class HashNode
     {
         //string key;
-        Goods good;
-        HashNode next;
+        private Goods good;
+        private HashNode next;
 
         public HashNode(Goods data)
         {
-            this.good = data;
-            this.next = null;
+            good = data;
+            next = null;
         }
 
         //public string Key
@@ -45,26 +45,14 @@ namespace TestTAProgect
 
         public Goods Good
         {
-            get
-            {
-                return good;
-            }
-            set
-            {
-                good = value;
-            }
+            get => good;
+            set => good = value;
         }
 
         public HashNode Next
         {
-            get
-            {
-                return next;
-            }
-            set
-            {
-                next = value;
-            }
+            get => next;
+            set => next = value;
         }
     }
 }

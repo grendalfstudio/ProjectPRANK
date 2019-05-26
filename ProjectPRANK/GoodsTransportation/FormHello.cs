@@ -12,7 +12,8 @@ namespace GoodsTransportation
 {
     public partial class FormHello : Form
     {
-        Timer timer = new Timer();
+        private Timer timer = new Timer();
+
         public FormHello()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace GoodsTransportation
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            FormMain formMain = new FormMain();
+            var formMain = new FormMain();
             Hide();
             formMain.Show();
             timer.Stop();

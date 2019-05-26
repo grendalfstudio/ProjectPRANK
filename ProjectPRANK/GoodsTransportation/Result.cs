@@ -13,6 +13,7 @@ namespace GoodsTransportation
     public partial class Result : Form
     {
         private int[] _distances;
+
         public Result()
         {
             InitializeComponent();
@@ -30,9 +31,9 @@ namespace GoodsTransportation
             dgridDistances.ColumnCount = _distances.Length;
             dgridDistances.Rows[0].HeaderCell.Value = "Vertex";
             dgridDistances.Rows[1].HeaderCell.Value = "Distance from source";
-            for (int i = 0; i < _distances.Length; i++)
+            for (var i = 0; i < _distances.Length; i++)
             {
-                dgridDistances.Rows[0].Cells[i].Value = i+1;
+                dgridDistances.Rows[0].Cells[i].Value = i + 1;
                 dgridDistances.Rows[1].Cells[i].Value = _distances[i];
             }
         }
