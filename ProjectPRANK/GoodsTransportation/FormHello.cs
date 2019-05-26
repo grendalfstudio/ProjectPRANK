@@ -16,7 +16,7 @@ namespace GoodsTransportation
         public FormHello()
         {
             InitializeComponent();
-            timer.Interval = 3000;
+            timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             timer.Start();
         }
