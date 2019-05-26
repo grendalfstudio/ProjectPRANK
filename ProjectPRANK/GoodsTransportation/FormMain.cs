@@ -95,7 +95,7 @@ namespace GoodsTransportation
         private void ButtonSortName_Click(object sender, EventArgs e)// TODO
         {
             sortedGoods = goods.GetAll();
-            sort.Sort1(sortedGoods, 0, sortedGoods.Count - 1, Property.Name);// Changed
+            sort.Sort(sortedGoods, 0, sortedGoods.Count - 1, Property.Name);// Changed
             Output(sortedGoods);
             //    // sortedGoods gets data from the hash table
             //    Array.Sort(sortedGoods, NameComparison());
@@ -106,7 +106,7 @@ namespace GoodsTransportation
         private void ButtonSortWeight_Click(object sender, EventArgs e)// TODO
         {
             sortedGoods = goods.GetAll();
-            sort.Sort1(sortedGoods, 0, sortedGoods.Count - 1, Property.Weight); // Changed
+            sort.Sort(sortedGoods, 0, sortedGoods.Count - 1, Property.Weight); // Changed
             Output(sortedGoods);
         //    // sortedGoods gets data from the hash table
         //    Array.Sort(sortedGoods, WeightComparison());
@@ -116,7 +116,7 @@ namespace GoodsTransportation
         private void ButtonSortPrice_Click(object sender, EventArgs e)// TODO
         {
             sortedGoods = goods.GetAll();
-            sort.Sort1(sortedGoods, 0, sortedGoods.Count - 1, Property.Price);
+            sort.Sort(sortedGoods, 0, sortedGoods.Count - 1, Property.Price);
             Output(sortedGoods);
             //    // sortedGoods gets data from the hash table
             //    Array.Sort(sortedGoods, PriceComparison());
