@@ -16,10 +16,14 @@ namespace GoodsTransportation
     public partial class FormMain : Form
     {
         int goodsCount = 0;
-        private int _numberOfCities;
         private int[] numberOfPlaces;
+        
         private int[,] _roadMap;
         private int _srcVertex;
+        private int _numberOfCities;
+        private int _row;
+        private int _cell;
+
         private float[,] cityPlan;
         HashTable goods;  // Hash table
         private List <Goods> sortedGoods;
@@ -32,10 +36,19 @@ namespace GoodsTransportation
         private void ButtonAcceptCity_Click(object sender, EventArgs e)
         {
             _numberOfCities = int.Parse(textBoxNumberOfCities.Text);
-            _srcVertex = int.Parse(tbSrc.Text);
+            _srcVertex = int.Parse(tbSrc.Text) - 1;
             dataGridViewCities.RowCount = _numberOfCities;
             dataGridViewCities.ColumnCount = _numberOfCities;
             _roadMap = new int[_numberOfCities, _numberOfCities];
+
+            for (int i = 0; i < _numberOfCities; i++)
+            {
+                for (int j = 0; j < _numberOfCities; j++)
+                {
+                    if (i == j) dataGridViewCities[i, j].Value = 0;
+                }
+            }
+
             buttonAcceptCity.Enabled = false;
         }
 
@@ -48,6 +61,7 @@ namespace GoodsTransportation
                     _roadMap[i,j] = Convert.ToInt32(dataGridViewCities[i, j].Value);
                 }
             }
+            btnRes.Enabled = true;
         }
 
         private void btnRes_Click(object sender, EventArgs e)
@@ -108,18 +122,6 @@ namespace GoodsTransportation
             //    Array.Sort(sortedGoods, PriceComparison());
             //    dataGridViewGoods.DataSource = sortedGoods;
         }
-        //private Comparison<Goods> NameComparison()// TODO
-        //{
-
-        //}
-        //private Comparison<Goods> WeightComparison()// TODO
-        //{
-
-        //}
-        //private Comparison<Goods> PriceComparison()// TODO
-        //{
-
-        //}
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -221,6 +223,17 @@ namespace GoodsTransportation
         private void btnSetSrc_Click(object sender, EventArgs e)
         {
             _srcVertex = int.Parse(tbSrc.Text);
+        }
+
+        private void dataGridViewCities_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            _row = dataGridViewCities.SelectedCells[0].RowIndex;
+            _cell = dataGridViewCities.SelectedCells[0].ColumnIndex;
+        }
+
+        private void dataGridViewCities_CurrentCellChanged(object sender, EventArgs e)
+        {
+            dataGridViewCities[_row, _cell].Value = dataGridViewCities[_cell, _row].Value;
         }
     }
 
