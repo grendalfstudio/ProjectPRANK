@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewCities = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -85,6 +85,8 @@
             this.dataGridViewCities.RowHeadersVisible = false;
             this.dataGridViewCities.Size = new System.Drawing.Size(300, 300);
             this.dataGridViewCities.TabIndex = 0;
+            this.dataGridViewCities.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewCities_CellBeginEdit);
+            this.dataGridViewCities.CurrentCellChanged += new System.EventHandler(this.dataGridViewCities_CurrentCellChanged);
             // 
             // label1
             // 
@@ -205,18 +207,19 @@
             // 
             // btnSetRoads
             // 
-            this.btnSetRoads.Location = new System.Drawing.Point(312, 324);
+            this.btnSetRoads.BackColor = System.Drawing.Color.Red;
+            this.btnSetRoads.Location = new System.Drawing.Point(312, 48);
             this.btnSetRoads.Name = "btnSetRoads";
-            this.btnSetRoads.Size = new System.Drawing.Size(75, 23);
+            this.btnSetRoads.Size = new System.Drawing.Size(75, 300);
             this.btnSetRoads.TabIndex = 14;
-            this.btnSetRoads.Text = "Set road map";
-            this.btnSetRoads.UseVisualStyleBackColor = true;
+            this.btnSetRoads.Text = "SET ROAD MAP";
+            this.btnSetRoads.UseVisualStyleBackColor = false;
             this.btnSetRoads.Click += new System.EventHandler(this.btnSetRoads_Click);
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(404, 311);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(301, 20);
             this.textBox1.TabIndex = 13;
@@ -225,7 +228,7 @@
             // 
             this.btn_bfs.AutoSize = true;
             this.btn_bfs.Location = new System.Drawing.Point(526, 266);
-            this.btn_bfs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_bfs.Margin = new System.Windows.Forms.Padding(2);
             this.btn_bfs.Name = "btn_bfs";
             this.btn_bfs.Size = new System.Drawing.Size(82, 36);
             this.btn_bfs.TabIndex = 12;
@@ -258,6 +261,7 @@
             // btnRes
             // 
             this.btnRes.BackColor = System.Drawing.Color.Red;
+            this.btnRes.Enabled = false;
             this.btnRes.ForeColor = System.Drawing.Color.Black;
             this.btnRes.Location = new System.Drawing.Point(9, 119);
             this.btnRes.Name = "btnRes";
@@ -330,8 +334,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Name";
             this.Column1.MaxInputLength = 32;
@@ -423,8 +427,6 @@
             this.ClientSize = new System.Drawing.Size(734, 561);
             this.Controls.Add(this.groupBoxGoods);
             this.Controls.Add(this.groupBoxCitiesPlaces);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Goods Transportation";

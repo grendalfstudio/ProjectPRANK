@@ -31,14 +31,18 @@ namespace GoodsTransportation
 
                 while (i <= j)
                 {
-                    while (Compare(good[i], pivot, property) == -1 && i<=j)// Compare(a, b, property)
-                    {
-                        
+                  
+                    while (i <= j)
+                    {              
+                        if (Compare(good[i], pivot, property) != -1)
+                            break;
                         ++i;
-                    }
+                    }                    
 
-                    while (Compare(good[j], pivot, property) == 1 && j>=0)
+                    while (j>=0)
                     {
+                        if (Compare(good[j], pivot, property) != 1)
+                            break;
                         --j;
                     }
 
@@ -70,11 +74,11 @@ namespace GoodsTransportation
             switch (property)
             {
                 case Property.Weight:
-                    return (a.weight > b.weight ? 1 : -1);
+                    return (a.weight < b.weight ? 1 : -1);
                 case Property.Name:
                     return String.Compare(a.name, b.name);
                 case Property.Price:
-                    return (a.price > b.price ? 1 : -1);
+                    return (a.price < b.price ? 1 : -1);
                 default:
                     return 0;
             }

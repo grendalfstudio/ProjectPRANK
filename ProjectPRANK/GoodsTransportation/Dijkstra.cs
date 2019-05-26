@@ -1,18 +1,9 @@
-// A C# program for Dijkstra's single 
-// source shortest path algorithm. 
-// The program is for adjacency matrix 
-// representation of the graph 
 using System;
 
 namespace GoodsTransportation
 {
 	class GFG
 	{
-		// A utility function to find the 
-		// vertex with minimum distance 
-		// value, from the set of vertices 
-		// not yet included in shortest 
-		// path tree 
 		private static int V;
         private static int[] dist;
 
@@ -44,19 +35,10 @@ namespace GoodsTransportation
 		}
 
 		// Funtion that implements Dijkstra's 
-		// single source shortest path algorithm 
-		// for a graph represented using adjacency 
-		// matrix representation 
+		// single source shortest path algorithm
 		private void dijkstra(int[,] graph, int src)
 		{
-			dist = new int[V]; // The output array. dist[i] 
-			// will hold the shortest 
-			// distance from src to i 
-
-			// sptSet[i] will true if vertex 
-			// i is included in shortest path 
-			// tree or shortest distance from 
-			// src to i is finalized 
+			dist = new int[V];
 			bool[] sptSet = new bool[V];
 
 			// Initialize all distances as 
@@ -66,32 +48,20 @@ namespace GoodsTransportation
 				dist[i] = int.MaxValue;
 				sptSet[i] = false;
 			}
-
-			// Distance of source vertex 
-			// from itself is always 0 
+            
 			dist[src] = 0;
 
 			// Find shortest path for all vertices 
 			for (int count = 0; count < V - 1; count++)
 			{
-				// Pick the minimum distance vertex 
-				// from the set of vertices not yet 
-				// processed. u is always equal to 
-				// src in first iteration. 
 				int u = minDistance(dist, sptSet);
 
 				// Mark the picked vertex as processed 
 				sptSet[u] = true;
-
-				// Update dist value of the adjacent 
-				// vertices of the picked vertex. 
+                
 				for (int v = 0; v < V; v++)
 
-					// Update dist[v] only if is not in 
-					// sptSet, there is an edge from u 
-					// to v, and total weight of path 
-					// from src to v through u is smaller 
-					// than current value of dist[v] 
+					// Update dist[v] only if is not in sptSet
 					if (!sptSet[v] && graph[u, v] != 0 && dist[u] != int.MaxValue && dist[u] + graph[u, v] < dist[v])
 						dist[v] = dist[u] + graph[u, v];
 			}                  
