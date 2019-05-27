@@ -39,7 +39,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(561, 303);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Перевезення товарів";
+            this.label1.Text = "FarFar-Trans";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormHello

@@ -42,16 +42,17 @@
             this.dgridDistances.Name = "dgridDistances";
             this.dgridDistances.ReadOnly = true;
             this.dgridDistances.RowHeadersWidth = 160;
-            this.dgridDistances.Size = new System.Drawing.Size(775, 50);
+            this.dgridDistances.Size = new System.Drawing.Size(558, 50);
             this.dgridDistances.TabIndex = 0;
             // 
             // Result
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(581, 74);
             this.Controls.Add(this.dgridDistances);
             this.Name = "Result";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Result";
             this.Load += new System.EventHandler(this.Result_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgridDistances)).EndInit();

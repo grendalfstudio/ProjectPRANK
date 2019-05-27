@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="BreadthFirstSearch.cs" />
     <Compile Include="Dijkstra.cs" />
+    <Compile Include="FormBFS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBFS.Designer.cs">
+      <DependentUpon>FormBFS.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHello.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <Compile Include="Result.Designer.cs">
       <DependentUpon>Result.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormBFS.resx">
+      <DependentUpon>FormBFS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormHello.resx">
       <DependentUpon>FormHello.cs</DependentUpon>
     </EmbeddedResource>

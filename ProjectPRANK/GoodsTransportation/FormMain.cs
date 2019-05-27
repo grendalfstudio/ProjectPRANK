@@ -214,7 +214,8 @@ namespace GoodsTransportation
             ReadCity();
             var breadthFirstSearch = new BreadthFirstSearch(dataGridViewPlaces.RowCount, cityPlan);
             breadthFirstSearch.bfs();
-            textBox1.Text = breadthFirstSearch.bfs_search;
+            FormBFS formBFS = new FormBFS(breadthFirstSearch.bfs_search);
+            formBFS.Show();
         }
 
         private void dataGridViewCities_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -237,6 +238,11 @@ namespace GoodsTransportation
         {
             _rowPlaces = dataGridViewPlaces.SelectedCells[0].RowIndex;
             _cellPlaces = dataGridViewPlaces.SelectedCells[0].ColumnIndex;
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 

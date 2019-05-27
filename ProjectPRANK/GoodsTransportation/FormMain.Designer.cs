@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewCities = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,7 +41,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tbSrc = new System.Windows.Forms.TextBox();
             this.btnSetRoads = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_bfs = new System.Windows.Forms.Button();
             this.groupBoxGoods = new System.Windows.Forms.GroupBox();
             this.btnRes = new System.Windows.Forms.Button();
@@ -109,7 +108,7 @@
             this.dataGridViewPlaces.Location = new System.Drawing.Point(404, 48);
             this.dataGridViewPlaces.Name = "dataGridViewPlaces";
             this.dataGridViewPlaces.RowHeadersWidth = 50;
-            this.dataGridViewPlaces.Size = new System.Drawing.Size(299, 214);
+            this.dataGridViewPlaces.Size = new System.Drawing.Size(299, 259);
             this.dataGridViewPlaces.TabIndex = 9;
             this.dataGridViewPlaces.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewPlaces_CellBeginEdit);
             this.dataGridViewPlaces.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlaces_CellValueChanged);
@@ -155,7 +154,6 @@
             this.groupBoxCitiesPlaces.Controls.Add(this.label7);
             this.groupBoxCitiesPlaces.Controls.Add(this.tbSrc);
             this.groupBoxCitiesPlaces.Controls.Add(this.btnSetRoads);
-            this.groupBoxCitiesPlaces.Controls.Add(this.textBox1);
             this.groupBoxCitiesPlaces.Controls.Add(this.btn_bfs);
             this.groupBoxCitiesPlaces.Controls.Add(this.textBoxNumberOfCities);
             this.groupBoxCitiesPlaces.Controls.Add(this.dataGridViewPlaces);
@@ -200,21 +198,13 @@
             this.btnSetRoads.UseVisualStyleBackColor = false;
             this.btnSetRoads.Click += new System.EventHandler(this.btnSetRoads_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(404, 306);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(299, 20);
-            this.textBox1.TabIndex = 13;
-            // 
             // btn_bfs
             // 
             this.btn_bfs.AutoSize = true;
-            this.btn_bfs.Location = new System.Drawing.Point(404, 266);
+            this.btn_bfs.Location = new System.Drawing.Point(404, 312);
             this.btn_bfs.Margin = new System.Windows.Forms.Padding(2);
             this.btn_bfs.Name = "btn_bfs";
-            this.btn_bfs.Size = new System.Drawing.Size(299, 36);
+            this.btn_bfs.Size = new System.Drawing.Size(301, 36);
             this.btn_bfs.TabIndex = 12;
             this.btn_bfs.Text = "Show rezult";
             this.btn_bfs.UseVisualStyleBackColor = true;
@@ -318,8 +308,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Name";
             this.Column1.MaxInputLength = 32;
@@ -416,6 +406,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Goods Transportation";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCities)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaces)).EndInit();
             this.groupBoxCitiesPlaces.ResumeLayout(false);
@@ -454,7 +445,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button btnShowGoods;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btn_bfs;
         private System.Windows.Forms.Button btnRes;
         private System.Windows.Forms.Button btnSetRoads;
