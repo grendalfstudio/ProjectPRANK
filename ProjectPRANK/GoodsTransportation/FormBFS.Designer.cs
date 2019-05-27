@@ -45,6 +45,7 @@
             this.ClientSize = new System.Drawing.Size(301, 42);
             this.Controls.Add(this.textBox1);
             this.Name = "FormBFS";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Result";
             this.ResumeLayout(false);
             this.PerformLayout();
